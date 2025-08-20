@@ -9,3 +9,16 @@
 
 ## Практика
 - Добавь эндпоинт для `/api/health`, который будет возвращать `{status: 'ok'}` для Express JS Node JS бэкенда
+
+### Дополнительные задания
+
+1. Разработайте простое приложение Todo:
+   - Создайте таблицу `todos(id SERIAL PRIMARY KEY, text TEXT NOT NULL, completed BOOLEAN DEFAULT false)` в PostgreSQL.
+   - Реализуйте REST-эндпоинты `GET /api/todos`, `POST /api/todos`, `PATCH /api/todos/:id`, `DELETE /api/todos/:id`.
+   - На фронтенде отобразите список задач, возможность добавления, отметки выполнения и удаления.
+   - Используйте Chakra UI для построения интерфейса (кнопки, список, форма добавления).
+   - Используйте `fetch` или `axios` для общения с бэкендом.
+
+2. Сконфигурируйте `docker-compose.yml`, чтобы одновременно поднимать backend и базу данных PostgreSQL командой `docker compose up --build`.
+3. Добавьте поддержку переменных окружения через файл `.env` для строки подключения к базе.
+4. Протестируйте ваше API через Postman/Insomnia и приложите скриншоты в Pull Request.
