@@ -1,4 +1,3 @@
-```markdown
 # Fullstack Event Sourcing Example
 
 **Учебный проект** по разработке веб‑приложений, демонстрирующий два ключевых подхода к хранению и обработке данных:
@@ -39,8 +38,8 @@ fullstack-event-sourcing-example/
 ### 🔧 Установка и запуск
 1. **Клонировать репозиторий**
    ```bash
-   git clone https://github.com/gggolddeity/yourggpu_web_dev.git
-   cd yourggpu_web_dev/fullstack-event-sourcing-example
+   git clone https://github.com/<your-username>/yourggpu_web_dev_docsify.git
+   cd yourggpu_web_dev_docsify
    ```
 2. **Настроить базу данных**
     - Создайте БД:
@@ -95,5 +94,3 @@ fullstack-event-sourcing-example/
 - Node-Postgres: https://node-postgres.com/
 - Event Sourcing Basics: https://martinfowler.com/eaaDev/EventSourcing.html
 - Vite + React: https://vitejs.dev/guide/
-```
-```

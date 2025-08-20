@@ -8,7 +8,7 @@
 - 🖥️ Backend
   - [Node.js + Express](backend.md)
   - [PostgreSQL](db.md)
-|- 📚 Руководства
+- 📚 Руководства
   - [Полный гайд по Node.js & Docker Compose](read.md)
-|- 🚀 Деплой
-  - [Деплой на Render](deploy.md)
+- 🚀 Деплой
+  - [Деплой на Render](deploy.md) 
