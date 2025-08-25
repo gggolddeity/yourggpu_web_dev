@@ -3,34 +3,40 @@ import db from './db.js';
 
 const router = express.Router();
 
-// classic messages CRUD
-router.get('/messages', async (req, res) => {
-    const { rows } = await db.query('SELECT * FROM messages ORDER BY id');
-    res.json(rows);
+// --- TODO CRUD endpoints ---
+// Получить все задачи
+router.get('/todos', async (_req, res) => {
+  const { rows } = await db.query('SELECT * FROM todos ORDER BY id');
+  res.json(rows);
 });
 
-router.post('/messages', async (req, res) => {
-    const { content } = req.body;
-    const { rows } = await db.query(
-        'INSERT INTO messages(content) VALUES($1) RETURNING *',
-        [content]
-    );
-    res.json(rows[0]);
+// Создать задачу
+router.post('/todos', async (req, res) => {
+  const { text } = req.body;
+  const { rows } = await db.query(
+    'INSERT INTO todos(text) VALUES($1) RETURNING *',
+    [text]
+  );
+  res.status(201).json(rows[0]);
 });
 
-// event sourcing
-router.get('/events', async (req, res) => {
-    const { rows } = await db.query('SELECT * FROM event_store ORDER BY id');
-    res.json(rows);
+// Обновить задачу (текст или статус)
+router.patch('/todos/:id', async (req, res) => {
+  const { id } = req.params;
+  const { text, completed } = req.body;
+  const { rows } = await db.query(
+    'UPDATE todos SET text = COALESCE($1, text), completed = COALESCE($2, completed) WHERE id = $3 RETURNING *',
+    [text, completed, id]
+  );
+  if (rows.length === 0) return res.status(404).json({ error: 'Not found' });
+  res.json(rows[0]);
 });
 
-router.post('/events', async (req, res) => {
-    const { aggregateId, type, data } = req.body;
-    const { rows } = await db.query(
-        'INSERT INTO event_store(aggregate_id, type, data) VALUES($1, $2, $3) RETURNING *',
-        [aggregateId, type, data]
-    );
-    res.json(rows[0]);
+// Удалить задачу
+router.delete('/todos/:id', async (req, res) => {
+  const { id } = req.params;
+  await db.query('DELETE FROM todos WHERE id = $1', [id]);
+  res.status(204).end();
 });
 
 export default router;

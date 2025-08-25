@@ -10,5 +10,7 @@
   - [PostgreSQL](db.md)
 - 📚 Руководства
   - [Полный гайд по Node.js & Docker Compose](read.md)
+  - 📝 Практика
+    - [Todo-приложение (полный гайд)](todo.md)
 - 🚀 Деплой
   - [Деплой на Render](deploy.md) 

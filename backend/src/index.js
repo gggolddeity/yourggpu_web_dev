@@ -26,6 +26,13 @@ async function init() {
       timestamp TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
     );
   `);
+    await db.query(`
+    CREATE TABLE IF NOT EXISTS todos (
+      id SERIAL PRIMARY KEY,
+      text TEXT NOT NULL,
+      completed BOOLEAN DEFAULT false
+    );
+  `);
 
     const PORT = process.env.PORT || 3001;
     app.listen(PORT, () => console.log(`Backend listening on port ${PORT}`));
